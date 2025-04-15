@@ -1,0 +1,4 @@
+Inserir
+Remover
+Verificar Vazia
+Verificar Cheia
