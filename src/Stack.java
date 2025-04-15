@@ -90,16 +90,16 @@ class Stack {
     public static void main(String[] args) {
         
         Stack stack = new Stack();
-
         Scanner scanner = new Scanner(System.in);
 
-        int reboot = 0;
+        int reboot = 0; 
         int elemento = 0;
+        int opcao = 0;
 
         System.out.println("Digite a quantidade de indices do vetor: ");
         int index = scanner.nextInt();
 
-        
+        stack.createStack(index); // criar um vetor com n elementos, e setar o top para -1
 
         do{
 
@@ -109,16 +109,16 @@ class Stack {
             System.out.println(" [ 3 ] - para verificar o último elemento do stack:");
             System.out.println(" [ 4 ] - para verificar se o stack está cheio:");
             System.out.println(" [ 5 ] - para verificar se o stack está vazio:");
-            int opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
             
-            switch (opcao)) {
+            switch (opcao) {
                 case 1:
                     System.out.println("Informe o elemento que deseja acrescentar ao stack: ");
                     elemento = scanner.nextInt();
                     stack.addStack(elemento);
                     stack.peek();
                     break;
-                    
+
                 case 2:
                     stack.removeStack();
                     stack.peek();
@@ -129,11 +129,13 @@ class Stack {
                     break;    
                 
                 case 4:
-                    stack.checkFull();
+                    if (stack.checkFull()) System.out.println("O Stack está cheio!");
+                    else System.out.println("Há índices no check!");                    
                     break;
 
                 case 5:
-                    stack.checkEmpty();
+                    if (stack.checkEmpty()) System.out.println("O Stack está vazio!");
+                    else System.out.println("O Stack não está vazio!");
                     break;
 
                 default:
@@ -141,52 +143,9 @@ class Stack {
                     break;
             }
 
-
             System.out.println("Deseja continuar? 1 - para repetir, 0 - para encerrar.");
-            opcao = scanner.nextInt();
+            reboot = scanner.nextInt();
 
         } while (reboot != 0);
-
-        stack.createStack(index); // criar um vetor com n elementos, e setar o top para -1
-
-        System.out.println(stack.checkEmpty());//teste se está vazio
-        System.out.println(stack.checkFull()); //testar se está complento
-
-        stack.removeStack(); // testar se é possível remover elemento inexistente
-
-        stack.addStack(7);
-        stack.addStack(9);
-        stack.addStack(10);
-
-        stack.peek(); // peek e adicionar está funcionando
-
-        stack.removeStack(); //testar se o removestack está funcionando
-
-        stack.peek(); // remover o último elemento está funcionando
-
-        stack.addStack(15);
-
-        stack.peek(); // verificar se está retornando ao mesmo índice
-
-        //saturar o stack
-        stack.addStack(8);
-        stack.addStack(3);
-        stack.addStack(1);
-        stack.addStack(4);
-        stack.addStack(9);
-        stack.addStack(8);
-        stack.addStack(7);// fim do stack, não deve ser possível addicionar mais elementos
-
-        stack.peek(); //validar último elemento
-
-        stack.addStack(1); // não deve ser possível adicionar mais esses elementos
-
-        stack.peek();
-
-        stack.addStack(2);
-
-        stack.peek();
-
-        scanner.close();
     }
 }
